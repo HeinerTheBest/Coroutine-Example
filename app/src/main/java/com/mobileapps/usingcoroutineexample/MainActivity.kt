@@ -10,7 +10,9 @@ import kotlinx.coroutines.*
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.Dispatchers.Main
 
+
 class MainActivity : AppCompatActivity() {
+
     private val TAG: String = "AppDebug"
 
     private val PROGRESS_MAX = 100
@@ -23,11 +25,11 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        btnStartJob.setOnClickListener {
+        job_button.setOnClickListener {
             if(!::job.isInitialized){
                 initjob()
             }
-            progress_horizontal.startJobOrCancel(job)
+            job_progress_bar.startJobOrCancel(job)
         }
     }
 
@@ -39,7 +41,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun initjob(){
-        btnStartJob.setText("Start Job #1")
+        job_button.setText("Start Job #1")
         updateJobCompleteTextView("")
         job = Job()
         job.invokeOnCompletion {
@@ -52,8 +54,8 @@ class MainActivity : AppCompatActivity() {
                 showToast(msg)
             }
         }
-        progress_horizontal.max = PROGRESS_MAX
-        progress_horizontal.progress = PROGRESS_START
+        job_progress_bar.max = PROGRESS_MAX
+        job_progress_bar.progress = PROGRESS_START
     }
 
 
@@ -63,7 +65,7 @@ class MainActivity : AppCompatActivity() {
             resetjob()
         }
         else{
-            btnStartJob.setText("Cancel Job #1")
+            job_button.setText("Cancel Job #1")
             CoroutineScope(IO + job).launch{
                 Log.d(TAG, "coroutine ${this} is activated with job ${job}.")
 
@@ -78,7 +80,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun updateJobCompleteTextView(text: String){
         GlobalScope.launch (Main){
-            tvJobComplete.setText(text)
+            job_complete_text.setText(text)
         }
     }
 
@@ -92,4 +94,13 @@ class MainActivity : AppCompatActivity() {
         super.onDestroy()
         job.cancel()
     }
+
 }
+
+
+
+
+
+
+
+

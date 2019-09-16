@@ -5,39 +5,49 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".MainActivity">
+        tools:context=".MainActivity"
+        android:padding="10dp">
 
     <LinearLayout
-            android:orientation="vertical"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="50dp"
+            android:id="@+id/layout1"
+            android:orientation="vertical"
+            android:gravity="center"
+            app:layout_constraintVertical_chainStyle="packed"
+    >
 
         <ProgressBar
-                android:id="@+id/progress_horizontal"
-                android:layout_margin="5dp"
-                style="@style/Widget.AppCompat.ProgressBar.Horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                android:id="@+id/job_progress_bar"
+        />
 
         <Button
-                android:id="@+id/btnStartJob"
-                android:text="@string/start_job"
-                android:layout_gravity="center_horizontal"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:text="start Job"
+                android:id="@+id/job_button"
+                android:layout_marginTop="10dp"
+        />
+
         <TextView
-                android:id="@+id/tvJobComplete"
-                tools:text="Job Complete"
-                android:textColor="#000"
-                android:textSize="18sp"
-                android:layout_gravity="center_horizontal"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-
-
+                android:layout_height="wrap_content"
+                android:id="@+id/job_complete_text"
+                android:textColor="#000"
+                android:textSize="20sp"
+                android:layout_marginTop="20dp"
+        />
 
     </LinearLayout>
+
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
